@@ -1,0 +1,86 @@
+/* ------------------- */
+/* Document classess */
+/* ------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Raleway";
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* ------------------- */
+/* All main nav clases */
+/* ------------------- */
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 38px 50px 42px 50px;
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-nav li {
+  display: inline;
+  margin: auto 0;
+  padding-left: 60px;
+  font-size: 111%;
+  font-weight: 600;
+}
+
+.logo {
+  max-width: 158px;
+}
+
+/* ------------------- */
+/* Hero section classes */
+/* ------------------- */
+
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hero-img {
+  margin-left: 145px;
+}
+
+.hero-img img {
+  width: 550px;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 575px;
+  margin-right: 130px;
+}
+
+.hero-text p {
+  padding: 10px 0;
+}
+
+.hero-buttons {
+  display: flex;
+  padding-top: 30px;
+}
+
+h1 {
+  font-family: "Italiana", serif;
+  font-style: normal;
+  font-size: 500%;
+  line-height: 95%;
+
+  padding-bottom: 30px;
+}

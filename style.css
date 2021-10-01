@@ -350,6 +350,8 @@ select::-ms-expand {
 .footer {
   color: #ffffff;
   line-height: 130%;
+  display: flex;
+  flex-direction: column;
 }
 
 .social {

@@ -12,6 +12,12 @@ html {
   font-family: "Raleway";
   font-size: 18px;
   font-weight: 400;
+  color: #444444;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* ------------------- */
@@ -69,6 +75,7 @@ html {
 
 .hero-text p {
   padding: 10px 0;
+  line-height: 170.4%;
 }
 
 .hero-buttons {
@@ -83,4 +90,135 @@ h1 {
   line-height: 95%;
 
   padding-bottom: 30px;
+}
+
+.primary-button {
+  padding: 10px 30px;
+  margin-right: 30px;
+
+  background: #444444;
+  box-shadow: 0px 3px 23px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+
+  color: #ffffff;
+  font-family: "Raleway";
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.secondary-button {
+  padding: 10px 30px;
+  background: #ffffff;
+  border: 1px solid #eea23f;
+  border-radius: 8px;
+
+  color: #eea23f;
+  font-family: "Raleway";
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.hero-arrow {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+/* ------------------- */
+/* Section heading class */
+/* ------------------- */
+
+.section-heading {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+
+  font-family: "Italiana", serif;
+  font-style: normal;
+  font-size: 250%;
+  line-height: 95%;
+
+  padding: 70px 0 30px 0;
+}
+
+/* ------------------- */
+/* Roll classes */
+/* ------------------- */
+
+.roll-section {
+  display: flex;
+  justify-content: stretch;
+  width: 100%;
+  padding: 50px 0;
+}
+
+.roll-img {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.roll-img img {
+  max-width: 300px;
+  padding-right: 50px;
+}
+
+.roll-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 445px;
+  width: 50%;
+}
+
+.roll-text p {
+  padding: 10px 0;
+  line-height: 170.4%;
+}
+
+.roll-buttons {
+  display: flex;
+  padding-top: 20px;
+}
+
+h4 {
+  font-family: "Italiana", serif;
+  font-style: normal;
+  font-size: 200%;
+  line-height: 95%;
+
+  padding-bottom: 20px;
+}
+
+/* ------------------- */
+/* Footer Classes */
+/* ------------------- */
+
+.footer-main {
+  background-color: #444444;
+  display: flex;
+  justify-content: space-around;
+  padding: 75px 370px;
+}
+
+.footer {
+  color: #ffffff;
+  line-height: 130%;
+}
+
+.social {
+  font-weight: 700;
+  padding-left: 50px;
+}
+
+.highlight {
+  font-weight: 600;
+}
+
+#list1 {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-decoration-color: #eea23f;
 }

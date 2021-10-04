@@ -240,7 +240,6 @@ h6 {
 .details-text {
   display: flex;
   flex-direction: column;
-  justify-content: top;
   max-width: 445px;
   width: 50%;
 }

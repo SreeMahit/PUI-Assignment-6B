@@ -228,8 +228,14 @@ h6 {
 
 .details-img {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 50%;
+}
+
+.details-img a {
+  font-size: 111%;
+  font-weight: 600;
+  padding-left: 50px;
 }
 
 .details-img img {

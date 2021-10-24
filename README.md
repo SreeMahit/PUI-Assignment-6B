@@ -1,4 +1,4 @@
-# PUI-BBBShop
+# PUI-Assignment-6
 
 # -----------------------------------------------
 
@@ -6,20 +6,12 @@
 
 # Link to netlify site:
 
-# https://bbbshop.netlify.app/
+# https://pui-assignment-6.netlify.app/
+
+# The shopping cart has been fully prototypes and made interactive only on the product details page original.html
+
+# Please view this page for all additional functionality and features built into the website.
 
 # -----------------------------------------------
 
-# Extra credit work done:
-
-# Built product detail pages for all 6 flavours of cinnamon rolls
-
-# Built the About Us page
-
-# Built a WIP page for when cart/add to cart buttons are pressed since those pages haven't been built yet
-
-# -----------------------------------------------
-
-# Building this website involved a lot of googling and reading up on css styles
-
-# Though I cannot link each ande very website I referred to, I am grateful for all the resources online
+# All images are credited to open licensing platforms Flickr and CCCommons.

@@ -31,6 +31,8 @@ const flavors = [
   },
 ];
 
+// This code controls the cart popup when a user hovers over the icon
+
 function showPopup() {
   const cartPopup = document.getElementsByClassName("cart-pop-up");
   console.log(cartPopup);
@@ -41,12 +43,6 @@ function hidePopup() {
   const cartPopup = document.getElementsByClassName("cart-pop-up");
   console.log(cartPopup);
   cartPopup[0].style.display = "none";
-}
-
-function productDetails(flavor) {
-  const prodImg = document.getElementById("prod-img");
-  console.log(prodImg);
-  prodImg.setAttribute("src", "images/blackberry.png");
 }
 
 const glazing = document.getElementById("glazing");
@@ -63,6 +59,8 @@ const cartButton = document.getElementsByClassName(
 let cartArr = [];
 let totalPrice = 0;
 let total = 0;
+
+// Code to add to cart
 
 function addToCart() {
   const rollName = document.getElementById("roll-name").innerHTML;
@@ -156,6 +154,8 @@ function addToCart() {
   cartTotal.innerHTML = `Total: $${Number(totalPrice).toFixed(2)}`;
 }
 
+// Code to update the total price depending on the chosen options
+
 function setTotal() {
   const number = document.getElementById("number");
   const selectedNumber = number.options[number.selectedIndex].text;
@@ -176,6 +176,9 @@ function setTotal() {
     }
   }
 }
+
+// Code to reset all parameters and update the shopping cart
+// popup when user deletes an option in the cart
 
 function removeItem(id) {
   cartArr.splice(id, 1);

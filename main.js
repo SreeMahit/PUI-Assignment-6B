@@ -10,12 +10,12 @@ const flavors = [
     allergen: ["milk", "egg"],
   },
   {
-    name: "caramel pecan",
+    name: "caramel",
     image: "caramel.png",
     allergen: ["milk", "egg", "soy"],
   },
   {
-    name: "pumpkin spice",
+    name: "pumpkin",
     image: "pumpkin.png",
     allergen: ["egg", "soy"],
   },
@@ -25,13 +25,11 @@ const flavors = [
     allergen: ["nuts", "milk"],
   },
   {
-    name: "original (gluten-free)",
+    name: "glutenfree",
     image: "gluten.png",
     allergen: ["milk"],
   },
 ];
-
-// This code controls the cart popup when a user hovers over the icon
 
 function showPopup() {
   const cartPopup = document.getElementsByClassName("cart-pop-up");
@@ -57,10 +55,12 @@ const cartButton = document.getElementsByClassName(
 );
 
 let cartArr = [];
+cartArr = JSON.parse(localStorage.getItem("cart"))
+  ? JSON.parse(localStorage.getItem("cart"))
+  : [];
+console.log(cartArr);
 let totalPrice = 0;
 let total = 0;
-
-// Code to add to cart
 
 function addToCart() {
   const rollName = document.getElementById("roll-name").innerHTML;
@@ -103,58 +103,11 @@ function addToCart() {
   }
   cartArr.push(itemDetails);
 
-  // console.log(selectedGlazing);
-  // console.log(selectedNumber);
-  // console.log(rollName);
-  // console.log(itemDetails);
-  // console.log(cartArr);
+  let stringedCart = JSON.stringify(cartArr);
+  localStorage.setItem("cart", stringedCart);
 
-  let newItem = ``;
-  for (i = 0; i < cartArr.length; i++) {
-    newItem = `<div class="cart-pop-up-item"> 
-    <img
-      class="cart-pop-up-image"
-      src="images/${cartArr[i].image}"
-      alt="product image"
-    />
-    <div class="cart-pop-up-item-details">
-      <h5>${cartArr[i].name}</h5>
-      <ul>
-        <li>${cartArr[i].glazing}</li>
-        <li>${cartArr[i].number}</li>
-      </ul>
-    </div>
-    <img
-      class="cart-pop-up-icon"
-      src="images/cross.png"
-      alt="icon to remove item"
-      onclick=removeItem(${i})
-    />
-    </div>`;
-  }
-
-  const cartPopUp = document.getElementsByClassName("items-list");
-  cartPopUp[0].innerHTML = cartPopUp[0].innerHTML + newItem;
-
-  if (emptyDiv.length > 0) {
-    // emptyDiv[0].setAttribute("class", "hidden");
-    emptyDiv[0].classList.add("hidden");
-    cartNumber.style.visibility = "visible";
-    cartNumber.innerHTML = cartArr.length;
-  }
-
-  cartButton[0].innerHTML = "Checkout";
-  cartButton[0].setAttribute("href", "cart.html");
-
-  cartTotal.classList.remove("hidden");
-  totalPrice = 0;
-  for (const i of cartArr) {
-    totalPrice = totalPrice + i.price;
-  }
-  cartTotal.innerHTML = `Total: $${Number(totalPrice).toFixed(2)}`;
+  renderCart();
 }
-
-// Code to update the total price depending on the chosen options
 
 function setTotal() {
   const number = document.getElementById("number");
@@ -177,15 +130,13 @@ function setTotal() {
   }
 }
 
-// Code to reset all parameters and update the shopping cart
-// popup when user deletes an option in the cart
-
 function removeItem(id) {
   cartArr.splice(id, 1);
   const cartPopUp = document.getElementsByClassName("items-list");
   cartPopUp[0].innerHTML = "";
 
-  let newItem = ``;
+  let stringedCart = JSON.stringify(cartArr);
+  localStorage.setItem("cart", stringedCart);
 
   if (cartArr.length <= 0) {
     cartButton[0].innerHTML = "Reveal the rolls";
@@ -195,6 +146,23 @@ function removeItem(id) {
     cartNumber.style.visibility = "hidden";
     cartNumber.innerHTML = cartArr.length;
   } else {
+    renderCart();
+  }
+}
+
+function renderCart() {
+  const cartPopUp = document.getElementsByClassName("items-list");
+
+  if (cartArr.length <= 0) {
+    cartButton[0].innerHTML = "Reveal the rolls";
+    cartButton[0].setAttribute("href", "list.html");
+    cartTotal.classList.add("hidden");
+    emptyDiv[0].classList.remove("hidden");
+    cartNumber.style.visibility = "hidden";
+    cartNumber.innerHTML = cartArr.length;
+  } else {
+    cartPopUp[0].innerHTML = "";
+    let newItem = ``;
     for (i = 0; i < cartArr.length; i++) {
       newItem = `<div class="cart-pop-up-item"> 
     <img
@@ -217,14 +185,31 @@ function removeItem(id) {
     />
     </div>`;
 
-      totalPrice = 0;
-      for (const i of cartArr) {
-        totalPrice = totalPrice + i.price;
-      }
-      cartTotal.innerHTML = `Total: $${Number(totalPrice).toFixed(2)}`;
-
       cartPopUp[0].innerHTML = cartPopUp[0].innerHTML + newItem;
+    }
+
+    if (emptyDiv.length > 0) {
+      emptyDiv[0].classList.add("hidden");
+      cartNumber.style.visibility = "visible";
       cartNumber.innerHTML = cartArr.length;
     }
+
+    cartButton[0].innerHTML = "Checkout";
+    cartButton[0].setAttribute("href", "cart.html");
+
+    cartTotal.classList.remove("hidden");
+    totalPrice = 0;
+    for (const i of cartArr) {
+      totalPrice = totalPrice + i.price;
+    }
+    cartTotal.innerHTML = `Total: $${Number(totalPrice).toFixed(2)}`;
   }
 }
+
+window.onload = renderCart();
+
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+const selectedProduct = params.name;
+
+console.log(selectedProduct);

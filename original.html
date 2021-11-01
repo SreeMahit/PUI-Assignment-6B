@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Bun Bun Bake Shop</title>
     <link rel="stylesheet" href="style.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -78,10 +79,14 @@
 
     <!-- The following code is for the all product details. -->
 
-    <section class="details-section">
+    <section class="details-section" onload="renderDetails()">
       <div class="details-img">
         <a href="list.html">← Back</a>
-        <img src="/Images/original.png" alt="original cinnamon roll" />
+        <img
+          id="product-image"
+          src="/Images/original.png"
+          alt="original cinnamon roll"
+        />
       </div>
       <div class="details-text">
         <h4 id="roll-name">original</h4>
@@ -157,6 +162,7 @@
         </a>
       </div>
     </section>
+    <script src="details.js" type="text/javascript"></script>
     <script src="main.js" type="text/javascript"></script>
   </body>
 </html>

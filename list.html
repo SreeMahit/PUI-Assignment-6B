@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Bun Bun Bake Shop</title>
     <link rel="stylesheet" href="style.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,12 +28,54 @@
         <li><a href="list.html" class="active">Cinnamon rolls</a></li>
         <li><a href="about.html">About us</a></li>
         <li>
-          <a href="wip.html"
+          <a
+            href="cart.html"
+            onmouseenter="showPopup()"
+            onmouseleave="hidePopup()"
             ><img src="images/bx_bx-cart.svg" alt="add to cart icon"
           /></a>
+          <div class="index-wrapper">
+            <div id="item-number">1</div>
+          </div>
         </li>
       </ul>
     </nav>
+
+    <!-- The following code is for the shopping cart popup -->
+
+    <div class="cart-pop-up">
+      <div
+        class="position-wrapper"
+        onmouseenter="showPopup()"
+        onmouseleave="hidePopup()"
+      >
+        <div class="cart-pop-up-list">
+          <h4 class="cart-pop-up-header">items in cart</h4>
+
+          <div class="items-list"></div>
+
+          <div class="cart-pop-up-empty">
+            <img
+              class="cart-pop-up-image"
+              src="/Images/empty-cart.png"
+              alt="product image"
+            />
+            <div class="cart-pop-up-item-details">
+              <h5>the cart is empty!</h5>
+            </div>
+          </div>
+
+          <div class="cart-pop-up-buttons">
+            <h6 id="cart-total" class="hidden">total: $0.00</h6>
+            <a
+              class="primary-button cart-pop-up-primary-button"
+              href="list.html"
+              >Reveal the rolls</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
 
     <section class="section-heading">
       <h3>all cinnamon rolls</h3>
@@ -53,7 +96,10 @@
 
         <div class="roll-buttons">
           <a class="primary-button" href="wip.html">Add to cart</a>
-          <a class="secondary-button" href="original.html?name=original"
+          <a
+            class="secondary-button"
+            href="original.html?name=original"
+            onclick="saveFlavor('original')"
             >More info</a
           >
         </div>
@@ -75,7 +121,10 @@
 
         <div class="roll-buttons">
           <a class="primary-button" href="wip.html">Add to cart</a>
-          <a class="secondary-button" href="original.html?name=blackberry"
+          <a
+            class="secondary-button"
+            href="original.html?name=blackberry"
+            onclick="saveFlavor('blackberry')"
             >More info</a
           >
         </div>
@@ -97,7 +146,10 @@
 
         <div class="roll-buttons">
           <a class="primary-button" href="wip.html">Add to cart</a>
-          <a class="secondary-button" href="original.html?name=caramel"
+          <a
+            class="secondary-button"
+            href="original.html?name=caramel"
+            onclick="saveFlavor('caramel')"
             >More info</a
           >
         </div>
@@ -119,7 +171,10 @@
 
         <div class="roll-buttons">
           <a class="primary-button" href="wip.html">Add to cart</a>
-          <a class="secondary-button" href="original.html?name=pumpkin"
+          <a
+            class="secondary-button"
+            href="original.html?name=pumpkin"
+            onclick="saveFlavor('pumpkin')"
             >More info</a
           >
         </div>
@@ -141,7 +196,10 @@
 
         <div class="roll-buttons">
           <a class="primary-button" href="wip.html">Add to cart</a>
-          <a class="secondary-button" href="original.html?name=walnut"
+          <a
+            class="secondary-button"
+            href="original.html?name=walnut"
+            onclick="saveFlavor('walnut')"
             >More info</a
           >
         </div>
@@ -165,7 +223,10 @@
 
         <div class="roll-buttons">
           <a class="primary-button" href="wip.html">Add to cart</a>
-          <a class="secondary-button" href="original.html?name=glutenfree"
+          <a
+            class="secondary-button"
+            href="original.html?name=glutenfree"
+            onclick="saveFlavor('glutenfree')"
             >More info</a
           >
         </div>
@@ -198,5 +259,8 @@
         </a>
       </div>
     </section>
+    <!-- <script src="main.js" type="text/javascript"></script> -->
+    <script src="details.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
   </body>
 </html>

@@ -23,7 +23,7 @@
     <nav class="main-nav">
       <a href="index.html"
         ><img
-          src="images/Bun Bun Bake Shop.png"
+          src="/Images/Bun Bun Bake Shop.png"
           class="logo"
           alt="Bun Bun Bake Shop logo"
       /></a>
@@ -35,11 +35,50 @@
             href="cart.html"
             onmouseenter="showPopup()"
             onmouseleave="hidePopup()"
-            ><img src="images/bx_bx-cart.svg" alt="add to cart icon"
+            ><img src="/Images/bx_bx-cart.svg" alt="add to cart icon"
           /></a>
+          <div class="index-wrapper">
+            <div id="item-number">1</div>
+          </div>
         </li>
       </ul>
     </nav>
+
+    <!-- The following code is for the shopping cart popup -->
+
+    <div class="cart-pop-up">
+      <div
+        class="position-wrapper"
+        onmouseenter="showPopup()"
+        onmouseleave="hidePopup()"
+      >
+        <div class="cart-pop-up-list">
+          <h4 class="cart-pop-up-header">items in cart</h4>
+
+          <div class="items-list"></div>
+
+          <div class="cart-pop-up-empty">
+            <img
+              class="cart-pop-up-image"
+              src="/Images/empty-cart.png"
+              alt="product image"
+            />
+            <div class="cart-pop-up-item-details">
+              <h5>the cart is empty!</h5>
+            </div>
+          </div>
+
+          <div class="cart-pop-up-buttons">
+            <h6 id="cart-total" class="hidden">total: $0.00</h6>
+            <a
+              class="primary-button cart-pop-up-primary-button"
+              href="list.html"
+              >Reveal the rolls</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="cart-pop-up">
       <div

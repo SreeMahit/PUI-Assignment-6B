@@ -3,42 +3,42 @@ const flavors = [
     name: "original",
     image: "/Images/original.png",
     title: "original",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: "The OG. The good old. The original. You can't go wrong with the classics. The best of Bun Bun, all in one cinnamon roll.",
     allergen: ["Milk"],
   },
   {
     name: "blackberry",
     image: "/Images/blackberry.png",
     title: "blackberry",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: "They say fruits are good for you. Our newest cinnamon roll is scrumptious blackberry flavored goodness that's all things sweet.",
     allergen: ["Milk", "Egg"],
   },
   {
     name: "caramel",
     image: "/Images/caramel.png",
     title: "caramel pecan",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: "What's a good cinnamon roll without caramel dripping as you take a bite? Now this is a roll you wouldn't want to miss.",
     allergen: ["Milk", "Egg", "Soy"],
   },
   {
     name: "pumpkin",
     image: "/Images/pumpkin.png",
     title: "pumpkin spice",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: "'Tis the season for spooks, spice, and everything orange. At Bun Bun, it's always October. Get your pumpkin spice cinnamon roll",
     allergen: ["Egg", "Soy"],
   },
   {
     name: "walnut",
     image: "/Images/walnut.png",
     title: "walnut",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: "We hear you, you like a little crunch when you bite into a cinnamon roll. The walnut cinnamon roll is your best friend.",
     allergen: ["Nuts", "Milk"],
   },
   {
     name: "glutenfree",
     image: "/Images/gluten.png",
     title: "original (gluten-free)",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: "The OG. The good old. The original. The best of Bun Bun, all in one cinnamon roll. Now gluten-free. We've got you covered!",
     allergen: ["Milk"],
   },
 ];
@@ -155,8 +155,10 @@ function removeItem(id) {
     emptyDiv[0].classList.remove("hidden");
     cartNum.style.visibility = "hidden";
     cartNum.innerHTML = cartArr.length;
+    renderCheckOut();
   } else {
     renderCart();
+    renderCheckOut();
   }
 }
 
@@ -164,6 +166,7 @@ function renderCart() {
   const cartPopUp = document.getElementsByClassName("items-list");
 
   if (cartArr.length <= 0) {
+    cartPopUp[0].innerHTML = "";
     cartButton[0].innerHTML = "Reveal the rolls";
     cartButton[0].setAttribute("href", "list.html");
     cartTotalPrice.classList.add("hidden");
@@ -219,40 +222,22 @@ function renderCart() {
 window.onload = renderCart();
 
 function saveFlavor(flavor) {
-  // console.log(flavor);
   localStorage.setItem("selectedFlavor", flavor);
 }
-
-window.onload = function renderDetails() {
-  const selectedFlavor = localStorage.getItem("selectedFlavor");
-  // console.log(selectedFlavor);
-  const image = document.getElementById("product-image");
-  // console.log(image);
-  let imageSrc = "";
-  for (const product of flavors) {
-    if (product.name == selectedFlavor) {
-      // console.log(product.image);s
-      imageSrc = product.image;
-      return imageSrc;
-    }
-  }
-
-  image.setAttribute("src", imageSrc);
-};
 
 window.onload = renderCheckOut();
 
 function renderCheckOut() {
   const mainCart = document.getElementsByClassName("cart-list");
+  const emptyCart = document.getElementsByClassName("cart-empty-wrapper");
 
   if (cartArr.length <= 0) {
-    cartButton[0].innerHTML = "Reveal the rolls";
-    cartButton[0].setAttribute("href", "list.html");
-    cartTotalPrice.classList.add("hidden");
-    emptyDiv[0].classList.remove("hidden");
-    cartNum.style.visibility = "hidden";
-    cartNum.innerHTML = cartArr.length;
+    emptyCart[0].classList.remove("hidden");
+    mainCart[0].classList.add("hidden");
+    mainCartPrice.innerHTML = `Total: $0.00`;
   } else {
+    emptyCart[0].classList.add("hidden");
+    mainCart[0].classList.remove("hidden");
     mainCart[0].innerHTML = "";
     let newItem = ``;
     for (i = 0; i < cartArr.length; i++) {
@@ -288,15 +273,21 @@ function renderCheckOut() {
   }
 }
 
-// window.onload = renderCheckOut();
-
 function removeItemFromCart(id) {
   cartArr.splice(id, 1);
   const mainCart = document.getElementsByClassName("cart-list");
+  const emptyCart = document.getElementById("cart-empty-wrapper");
   mainCart[0].innerHTML = "";
 
   let stringedCart = JSON.stringify(cartArr);
   localStorage.setItem("cart", stringedCart);
 
+  renderCart();
   renderCheckOut();
+}
+
+function alertATC() {
+  window.alert(
+    "Adding to Cart from this page hasn't been implemented yet. Please go to More Info and then add to cart. Sorry!"
+  );
 }

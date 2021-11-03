@@ -80,44 +80,6 @@
       </div>
     </div>
 
-    <div class="cart-pop-up">
-      <div
-        class="position-wrapper"
-        onmouseenter="showPopup()"
-        onmouseleave="hidePopup()"
-      >
-        <div class="cart-pop-up-list">
-          <h4 class="cart-pop-up-header">items in cart</h4>
-          <div class="cart-pop-up-item">
-            <img
-              class="cart-pop-up-image"
-              src="images/original.png"
-              alt="product image"
-            />
-            <div class="cart-pop-up-item-details">
-              <h5>original</h5>
-              <ul>
-                <li>Box of 6</li>
-                <li>Double-chocolate</li>
-              </ul>
-            </div>
-            <img
-              class="cart-pop-up-icon"
-              src="images/cross.png"
-              alt="icon to remove item"
-            />
-          </div>
-
-          <div class="cart-pop-up-buttons">
-            <h6>total: $2.99</h6>
-            <a class="primary-button cart-pop-up-primary-button" href="wip.html"
-              >Checkout</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
     <section class="hero-section">
       <div class="hero-img">
         <img src="images/trial123.png" alt="cinnamon roll on a plate" />
@@ -164,7 +126,7 @@
         </p>
 
         <div class="roll-buttons">
-          <a class="primary-button" href="wip.html">Add to cart</a>
+          <a class="primary-button" onclick="alertATC()">Add to cart</a>
           <a
             class="secondary-button"
             href="original.html?name=blackberry"

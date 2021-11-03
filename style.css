@@ -40,7 +40,14 @@ a {
   margin: auto 0;
   padding-left: 60px;
   font-size: 111%;
-  font-weight: 600;
+  /* font-weight: 600; */
+}
+
+.main-nav li:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  text-decoration-color: #eea23f;
 }
 
 .logo {
@@ -140,6 +147,12 @@ h1 {
   font-family: "Raleway";
   font-size: 18px;
   font-weight: 700;
+
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .secondary-button {
@@ -152,6 +165,10 @@ h1 {
   font-family: "Raleway";
   font-size: 18px;
   font-weight: 700;
+}
+
+.secondary-button:hover {
+  box-shadow: 0px 3px 15px rgb(238, 162, 63, 0.3);
 }
 
 .hero-arrow {
@@ -450,6 +467,33 @@ h5 {
 .cart-item-details ul {
   line-height: 170.4%;
   transform: translateX(30px);
+}
+
+.cart-empty-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: right;
+}
+
+.cart-empty {
+  margin-right: 5em;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-empty-image {
+  width: 60%;
+  border-radius: 20px;
+  align-self: center;
+  margin-bottom: 1em;
+}
+
+.cart-empty-text {
+  width: 270px;
+  padding: 0px 25px 0 25px;
+  align-self: center;
 }
 
 .cart-delivery-details {

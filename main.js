@@ -2,32 +2,44 @@ const flavors = [
   {
     name: "original",
     image: "/Images/original.png",
-    allergen: ["milk"],
+    title: "original",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    allergen: ["Milk"],
   },
   {
     name: "blackberry",
     image: "/Images/blackberry.png",
-    allergen: ["milk", "egg"],
+    title: "blackberry",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    allergen: ["Milk", "Egg"],
   },
   {
     name: "caramel",
     image: "/Images/caramel.png",
-    allergen: ["milk", "egg", "soy"],
+    title: "caramel pecan",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    allergen: ["Milk", "Egg", "Soy"],
   },
   {
     name: "pumpkin",
     image: "/Images/pumpkin.png",
-    allergen: ["egg", "soy"],
+    title: "pumpkin spice",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    allergen: ["Egg", "Soy"],
   },
   {
     name: "walnut",
     image: "/Images/walnut.png",
-    allergen: ["nuts", "milk"],
+    title: "walnut",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    allergen: ["Nuts", "Milk"],
   },
   {
     name: "glutenfree",
     image: "/Images/gluten.png",
-    allergen: ["milk"],
+    title: "original (gluten-free)",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    allergen: ["Milk"],
   },
 ];
 
@@ -51,6 +63,7 @@ const cartNumberWrapper = document.getElementById("index-wrapper");
 const cartButton = document.getElementsByClassName(
   "cart-pop-up-primary-button"
 );
+const mainCartPrice = document.getElementById("main-cart-total");
 
 let cartArr = [];
 cartArr = JSON.parse(localStorage.getItem("cart"))
@@ -93,9 +106,9 @@ function addToCart() {
     price: totalAmt,
   };
 
-  for (const i of flavors) {
-    if (i.name == rollName) {
-      itemDetails.image = i.image;
+  for (roll of flavors) {
+    if (roll.title == rollName) {
+      itemDetails.image = roll.image;
     }
   }
 
@@ -226,3 +239,64 @@ window.onload = function renderDetails() {
 
   image.setAttribute("src", imageSrc);
 };
+
+window.onload = renderCheckOut();
+
+function renderCheckOut() {
+  const mainCart = document.getElementsByClassName("cart-list");
+
+  if (cartArr.length <= 0) {
+    cartButton[0].innerHTML = "Reveal the rolls";
+    cartButton[0].setAttribute("href", "list.html");
+    cartTotalPrice.classList.add("hidden");
+    emptyDiv[0].classList.remove("hidden");
+    cartNum.style.visibility = "hidden";
+    cartNum.innerHTML = cartArr.length;
+  } else {
+    mainCart[0].innerHTML = "";
+    let newItem = ``;
+    for (i = 0; i < cartArr.length; i++) {
+      newItem = `<div class="cart-item">
+      <img
+        class="cart-image"
+        src="${cartArr[i].image}"
+        alt="product image"
+      />
+      <div class="cart-item-details">
+        <h5>${cartArr[i].name}</h5>
+        <ul>
+          <li>${cartArr[i].glazing}</li>
+          <li>${cartArr[i].number}</li>
+        </ul>
+      </div>
+      <img
+        class="cart-icon"
+        src="images/cross.png"
+        alt="icon to remove item"
+        onclick=removeItemFromCart(${i})
+      />
+    </div>`;
+
+      mainCart[0].innerHTML = mainCart[0].innerHTML + newItem;
+    }
+
+    totalPrice = 0;
+    for (const i of cartArr) {
+      totalPrice = totalPrice + i.price;
+    }
+    mainCartPrice.innerHTML = `Total: $${Number(totalPrice).toFixed(2)}`;
+  }
+}
+
+// window.onload = renderCheckOut();
+
+function removeItemFromCart(id) {
+  cartArr.splice(id, 1);
+  const mainCart = document.getElementsByClassName("cart-list");
+  mainCart[0].innerHTML = "";
+
+  let stringedCart = JSON.stringify(cartArr);
+  localStorage.setItem("cart", stringedCart);
+
+  renderCheckOut();
+}

@@ -84,19 +84,16 @@
         <a href="list.html">← Back</a>
         <img
           id="product-image"
-          src="/Images/original.png"
+          src="/Images/temp.png"
           alt="original cinnamon roll"
         />
       </div>
       <div class="details-text">
-        <h4 id="roll-name">original</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <h4 id="roll-name"></h4>
+        <p id="roll-desc"></p>
         <h6>Allergen Information</h6>
-        <ul>
-          <li>Milk</li>
+        <ul id="roll-allergen">
+          <!-- <li>Milk</li> -->
         </ul>
 
         <div class="details-selector">
@@ -162,7 +159,37 @@
         </a>
       </div>
     </section>
-    <script src="details.js" type="text/javascript"></script>
+    <!-- <script src="details.js" type="text/javascript"></script> -->
     <script src="main.js" type="text/javascript"></script>
+    <script>
+      window.onload = function () {
+        const img = document.getElementById("product-image");
+        const rollName = document.getElementById("roll-name");
+        const rollDesc = document.getElementById("roll-desc");
+        const rollAllergen = document.getElementById("roll-allergen");
+        const selectFlavor = localStorage.getItem("selectedFlavor");
+        let title = "";
+        let desc = "";
+        let imgSrc = "";
+        let allergen = [];
+        for (product of flavors) {
+          if (product.name == selectFlavor) {
+            title = product.title;
+            desc = product.desc;
+            imgSrc = product.image;
+            allergen = product.allergen;
+          }
+        }
+        img.setAttribute("src", imgSrc);
+        rollName.innerHTML = title;
+        rollDesc.innerHTML = desc;
+        for (item of allergen) {
+          let allergenItem = document.createElement("li");
+          allergenItem.innerHTML = item;
+          rollAllergen.appendChild(allergenItem);
+          // rollAllergen.appendChild(`<li>${item}</li>`);
+        }
+      };
+    </script>
   </body>
 </html>

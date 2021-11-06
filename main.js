@@ -72,6 +72,16 @@ cartArr = JSON.parse(localStorage.getItem("cart"))
 let totalPrice = 0;
 let totalAmt = 0;
 
+const selectFlavor = localStorage.getItem("selectedFlavor");
+localStorage.setItem("cCounter", 0);
+let carousalArr = [];
+carousalArr = [...flavors];
+for (product of carousalArr) {
+  if (product.name == selectFlavor) {
+    carousalArr.splice(carousalArr.indexOf(product), 1);
+  }
+}
+
 function addToCart() {
   const rollName = document.getElementById("roll-name").innerHTML;
   const selectedGlazing = glazing.options[glazing.selectedIndex].text;
@@ -225,8 +235,6 @@ function saveFlavor(flavor) {
   localStorage.setItem("selectedFlavor", flavor);
 }
 
-window.onload = renderCheckOut();
-
 function renderCheckOut() {
   const mainCart = document.getElementsByClassName("cart-list");
   const emptyCart = document.getElementsByClassName("cart-empty-wrapper");
@@ -290,4 +298,39 @@ function alertATC() {
   window.alert(
     "Adding to Cart from this page hasn't been implemented yet. Please go to More Info and then add to cart. Sorry!"
   );
+}
+
+function alertPO() {
+  window.alert("You've reached the end of this website. Cheers!");
+}
+
+function renderCarousal(index) {
+  const recoImg = document.getElementById("reco-image");
+  const recoH4 = document.getElementById("reco-h4");
+  const recoDesc = document.getElementById("reco-desc");
+  const recoBtn = document.getElementById("reco-btn");
+  recoImg.setAttribute("src", carousalArr[index].image);
+  recoH4.innerHTML = carousalArr[index].title;
+  recoDesc.innerHTML = carousalArr[index].desc;
+  recoBtn.setAttribute("onclick", `saveFlavor('${carousalArr[index].name}')`);
+}
+
+function changeLeft() {
+  arrIndex = JSON.parse(localStorage.getItem("cCounter"));
+  arrIndex = arrIndex - 1;
+  if (arrIndex < 0) {
+    arrIndex = carousalArr.length - 1;
+  }
+  localStorage.setItem("cCounter", arrIndex);
+  renderCarousal(arrIndex);
+}
+
+function changeRight() {
+  arrIndex = JSON.parse(localStorage.getItem("cCounter"));
+  arrIndex = arrIndex + 1;
+  if (arrIndex >= carousalArr.length) {
+    arrIndex = 0;
+  }
+  localStorage.setItem("cCounter", arrIndex);
+  renderCarousal(arrIndex);
 }

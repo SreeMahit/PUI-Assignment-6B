@@ -133,6 +133,66 @@
       </div>
     </section>
 
+    <!-- <section class="reco">
+      <h2>recommended products</h2>
+      <div class="reco-carousal">
+        <div class="item-reco">
+          <img
+            class="item-reco-image"
+            src="/Images/original.png"
+            alt="product image"
+          />
+          <h4>original</h4>
+          <a
+            class="secondary-button"
+            href="original.html?name=glutenfree"
+            onclick="saveFlavor('original')"
+            >More info</a
+          >
+        </div>
+      </div>
+    </section> -->
+
+    <section class="section-heading-2">
+      <h4>recommended rolls</h4>
+    </section>
+
+    <section class="reco-section">
+      <div class="reco-img">
+        <div class="reco-chevron">
+          <a onclick="changeLeft()"><img src="images/chevron-left.png" /></a>
+        </div>
+        <a href="blackberry.html"
+          ><img
+            id="reco-image"
+            src="images/blackberry.png"
+            alt="blackberry cinnamon roll"
+        /></a>
+      </div>
+      <div class="reco-right">
+        <div class="reco-text">
+          <h4 id="reco-h4">blackberry</h4>
+          <p id="reco-desc">
+            They say fruits are good for you. Our newest cinnamon roll is
+            scrumptious blackberry flavored goodness that's all things sweet.
+          </p>
+
+          <div class="reco-buttons">
+            <a
+              id="reco-btn"
+              class="secondary-button"
+              href="original.html?name=blackberry"
+              onclick="saveFlavor('blackberry')"
+              >More info</a
+            >
+          </div>
+        </div>
+        <div class="reco-chevron">
+          <a onclick="changeRight()"><img src="images/chevron-right.png" /></a>
+        </div>
+      </div>
+    </section>
+
     <section class="footer-main">
       <div class="footer">
         <p class="highlight">Store Hours</p>
@@ -167,13 +227,13 @@
         const rollName = document.getElementById("roll-name");
         const rollDesc = document.getElementById("roll-desc");
         const rollAllergen = document.getElementById("roll-allergen");
-        const selectFlavor = localStorage.getItem("selectedFlavor");
+        const chosenFlavor = localStorage.getItem("selectedFlavor");
         let title = "";
         let desc = "";
         let imgSrc = "";
         let allergen = [];
         for (product of flavors) {
-          if (product.name == selectFlavor) {
+          if (product.name == chosenFlavor) {
             title = product.title;
             desc = product.desc;
             imgSrc = product.image;
@@ -187,8 +247,8 @@
           let allergenItem = document.createElement("li");
           allergenItem.innerHTML = item;
           rollAllergen.appendChild(allergenItem);
-          // rollAllergen.appendChild(`<li>${item}</li>`);
         }
+        renderCarousal(JSON.parse(localStorage.getItem("cCounter")));
       };
     </script>
   </body>

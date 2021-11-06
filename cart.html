@@ -145,7 +145,7 @@
           <p class="details">+1 (412) 123-4567</p>
         </div>
         <div class="cart-button">
-          <a class="primary-button" href="wip.html">Place order</a>
+          <a class="primary-button" onclick="alertPO()">Place order</a>
         </div>
       </div>
     </section>
@@ -177,5 +177,8 @@
       </div>
     </section>
     <script src="main.js" type="text/javascript"></script>
+    <script>
+      window.onload = renderCheckOut();
+    </script>
   </body>
 </html>

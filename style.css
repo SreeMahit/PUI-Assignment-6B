@@ -196,6 +196,74 @@ h1 {
 }
 
 /* ------------------- */
+/* Recommended products */
+/* ------------------- */
+
+.section-heading-2 {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+
+  font-family: "Italiana", serif;
+  font-style: normal;
+  font-size: 110%;
+  line-height: 95%;
+
+  padding: 80px 0 0 0;
+}
+
+.reco-section {
+  display: flex;
+  justify-content: stretch;
+
+  width: 100%;
+  padding: 50px 0;
+}
+
+.reco-right {
+  display: flex;
+  align-items: center;
+}
+
+.reco-img {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  align-items: center;
+}
+
+.reco-img img {
+  max-width: 300px;
+  padding-right: 50px;
+}
+
+.reco-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 445px;
+  width: 67%;
+}
+
+.reco-text p {
+  padding: 10px 0;
+  line-height: 170.4%;
+}
+
+.reco-buttons {
+  display: flex;
+  padding-top: 20px;
+}
+
+.reco-chevron {
+  padding: 0 2em 0 2em;
+}
+
+.reco-chevron a:hover {
+  cursor: pointer;
+}
+
+/* ------------------- */
 /* Roll classes */
 /* ------------------- */
 
